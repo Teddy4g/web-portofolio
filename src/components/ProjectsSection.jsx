@@ -50,6 +50,15 @@ const projects = [
     tags: ["Python", "Streamlit", "Logistic Regression"],
     demoUrl: "https://github.com/Teddy4g/ML-Fraud-Detection",
   },
+  {
+    id: 6,
+    title: "Portofolio Website",
+    description:
+      "A modern portfolio website designed to share my journey in data, design, and problem-solving, blending technical precision with personal creativity.",
+    image: "/projects/webporto.jpeg",
+    tags: ["React", "TailwindCSS", "Vercel"],
+    demoUrl: "https://github.com/Teddy4g/ML-Fraud-Detection",
+  },
 ];
 
 export const ProjectsSection = () => {
