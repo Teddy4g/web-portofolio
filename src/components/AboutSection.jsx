@@ -78,10 +78,9 @@ export const AboutSection = () => {
                 </div>
 
                 <div className="text-left">
-                  <h4 className="font-semibold text-lg">UI/UX Design</h4>
+                  <h4 className="font-semibold text-lg">Strategy Thinking & Business Insight</h4>
                   <p className="text-muted-foreground">
-                    Designing intuitive interfaces that translate data and insights into accessible, user-friendly experiences.
-                    Bridging logic and creativity to help ideas connect with people.
+                    Exploring structured problem-solving and data-driven thinking to understand business challenges. Through academic and organizational projects, I enjoy analyzing systems, identifying opportunities for improvement, and proposing actionable solutions.
                   </p>
                 </div>
               </div>

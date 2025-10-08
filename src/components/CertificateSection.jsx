@@ -43,6 +43,7 @@ export const CertificateSection = () => {
     //   image: "/certificates/ml.png",
     //   link: "https://coursera.org/verify/yyyyyy",
     // },
+  
    
   ];
 
