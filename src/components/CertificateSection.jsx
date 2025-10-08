@@ -27,22 +27,14 @@ export const CertificateSection = () => {
       image: "/certificates/3SERTI.png",
       link: "https://www.hackerrank.com/certificates/86536e96d6c1",
     },
-    // {
-    //   id: 4,
-    //   title: "Data Visualization with Tableau",
-    //   issuer: "Coursera | University of California, Davis",
-    //   year: "2024",
-    //   image: "/certificates/tableau.png",
-    //   link: "https://coursera.org/verify/xxxxxx",
-    // },
-    // {
-    //   id: 5,
-    //   title: "Machine Learning Foundations",
-    //   issuer: "Coursera | Stanford University",
-    //   year: "2024",
-    //   image: "/certificates/ml.png",
-    //   link: "https://coursera.org/verify/yyyyyy",
-    // },
+    {
+      id: 4,
+      title: "Python (Basic) - HackerRank",
+      issuer: "HackerRank",
+      year: "2025",
+      image: "/certificates/4SERTI.png",
+      link: "https://www.hackerrank.com/certificates/8e4aba765542",
+    },
   
    
   ];
@@ -59,8 +51,7 @@ export const CertificateSection = () => {
         </h2>
 
         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Here are some of my professional certifications and achievements that
-          reflect my skills in analytics, machine learning, and cloud computing.
+          Here are some of my professional certifications and achievements that reflect my growth and commitment to continuous learning in technology and data.
         </p>
 
         
