@@ -52,13 +52,6 @@ export const CertificateSection = () => {
     //   link: "https://coursera.org/verify/zzzzzz",
     // },
     // {
-    //   id: 7,
-    //   title: "Data Analytics Essentials",
-    //   issuer: "Google Career Certificates",
-    //   year: "2024",
-    //   image: "/certificates/google.png",
-    //   link: "https://coursera.org/verify/abcd1234",
-    // },
   ];
 
   
