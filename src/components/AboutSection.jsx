@@ -80,7 +80,7 @@ export const AboutSection = () => {
                 <div className="text-left">
                   <h4 className="font-semibold text-lg">Strategy Thinking & Business Insight</h4>
                   <p className="text-muted-foreground">
-                    Exploring structured problem-solving and data-driven thinking to understand business challenges. Through academic and organizational projects, I enjoy analyzing systems, identifying opportunities for improvement, and proposing actionable solutions.
+                    Exploring how data and structured thinking can turn business challenges into practical solutions.
                   </p>
                 </div>
               </div>
