@@ -43,15 +43,7 @@ export const CertificateSection = () => {
     //   image: "/certificates/ml.png",
     //   link: "https://coursera.org/verify/yyyyyy",
     // },
-    // {
-    //   id: 6,
-    //   title: "Python for Data Science",
-    //   issuer: "IBM Skills Network",
-    //   year: "2024",
-    //   image: "/certificates/python.png",
-    //   link: "https://coursera.org/verify/zzzzzz",
-    // },
-    // {
+   
   ];
 
   
