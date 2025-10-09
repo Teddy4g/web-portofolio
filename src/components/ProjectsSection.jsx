@@ -73,8 +73,7 @@ export const ProjectsSection = () => {
         </h2>
 
         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Here are some of my recent projects. Each project was carefully
-          crafted with attention to detail, performance, and user experience.
+          A collection of projects that demonstrate my experience in analytics, visualization, and structured problem-solving. Each project reflects my ability to translate data into actionable insights, design analytical workflows, and present findings that support better decision-making.
         </p>
 
         
