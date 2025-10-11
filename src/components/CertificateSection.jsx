@@ -35,6 +35,14 @@ export const CertificateSection = () => {
       image: "/certificates/4SERTI.png",
       link: "https://www.hackerrank.com/certificates/8e4aba765542",
     },
+    {
+      id: 5,
+      title: "Golang - Udemy",
+      issuer: "Udemy",
+      year: "2024",
+      image: "/certificates/5SERTI.jpg",
+      link: "https://www.udemy.com/certificate/UC-545bc7a6-e3ae-4faf-a59f-6713e77acb09/",
+    },
   
    
   ];
