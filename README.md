@@ -78,6 +78,20 @@ Deployed on [Vercel](https://vercel.com) for fast performance and seamless CI/CD
 | **Deployment** | Vercel |
 | **Version Control** | Git + GitHub |
 
----
+## ⚙️ Installation & Setup
 
-## 📂 Folder Structure
+Clone this repository and install dependencies.
+
+```bash
+# Clone repository
+git clone https://github.com/TeddyAg/web-portofolio.git
+cd web-portofolio
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
