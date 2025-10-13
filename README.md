@@ -23,7 +23,8 @@ Deployed on [Vercel](https://vercel.com) for fast performance and seamless CI/CD
 ---
 
 ## 🚀 Live Demo
-👉 [Visit Portfolio]([https://your-vercel-link.vercel.app](https://web-portofolio-teddy.vercel.app/))
+
+👉 [Visit Portfolio](https://web-portofolio-teddy.vercel.app)
 
 ---
 
