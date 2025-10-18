@@ -4,7 +4,7 @@ import { ArrowRight, ExternalLink } from "lucide-react";
 const projects = [
   {
     id: 1,
-    title: "London Bike Ride Analysis: Weather Impact and Seasonal Trends",
+    title: "Tableau Project 1",
     description:
       "Cleaned and transformed 6M+ London bike ride records in Python, then built an interactive Tableau dashboard to explore how weather and seasonal trends affect cycling behavior.",
     image: "/projects/DATA2.jpeg",
@@ -14,7 +14,7 @@ const projects = [
   },
   {
     id: 2,
-    title: "Bank Loan Dashboard",
+    title: "Tableau Project 2",
     description:
       "Cleaned and transformed 36K+ loan records in MySQL, then built an interactive Tableau dashboard to monitor loan performance and borrower trends.",
     image: "/projects/DATA1.jpeg",
@@ -24,7 +24,26 @@ const projects = [
   },
   {
     id: 3,
-    title: "Big Data Project – SHAP & LSTM Stock Prediction",
+    title: "Data Science Project 1",
+    description:
+      "Machine learning model predicting loan default risk using demographic and financial data.",
+    image: "/projects/DATA4.jpeg",
+    tags: ["Python", "Machine Learning", "PowerPoint"],
+    demoUrl: "https://www.canva.com/design/DAG2KGf6DiU/r6tl3ozRn0haJilR6of_6w/edit?utm_content=DAG2KGf6DiU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
+  },
+  {
+    id: 4,
+    title: "Data Science Project 2",
+    description:
+      "Clustered U.S. lake ecosystem data using HDBSCAN to identify high-risk regions from agricultural and urban pressures in a sustainability competition project.",
+    image: "/projects/DATA3.jpeg",
+    tags: ["Python", "HDBSCAN", "PowerPoint"],
+    demoUrl:
+      "https://www.canva.com/design/DAG0dfPwPKM/oFl7kTJ29IwGSMeEMukEOQ/edit",
+  },
+  {
+    id: 5,
+    title: "Academic Big Data Project",
     description:
       "Developed an LSTM-based stock prediction model with SHAP explainability to interpret key drivers in time-series forecasts for U.S. tech stocks.",
     image: "/projects/Big Data.jpeg",
@@ -32,18 +51,8 @@ const projects = [
     demoUrl: "https://github.com/Teddy4g/BIGDATA",
   },
   {
-    id: 4,
-    title: "Lake Ecosystem Risk Clustering (HDBSCAN)",
-    description:
-      "Clustered U.S. lake ecosystem data using HDBSCAN to identify high-risk regions from agricultural and urban pressures in a sustainability competition project.",
-    image: "/projects/DATA3.jpeg",
-    tags: ["Python", "HDBSCAN", "PowerPoint"],
-    demoUrl:
-      "https://github.com/Teddy4g/Lake-Risk-Clustering-using-HDBSCAN-",
-  },
-  {
-    id: 5,
-    title: "Fraud Detection in Financial Transactions",
+    id: 6,
+    title: "Machine learning Project",
     description:
       "Built a Streamlit app to predict fraudulent transactions using logistic regression and EDA on simulated real-world banking data.",
     image: "/projects/ML1.jpeg",
@@ -51,7 +60,7 @@ const projects = [
     demoUrl: "https://github.com/Teddy4g/ML-Fraud-Detection",
   },
   {
-    id: 6,
+    id: 7,
     title: "Portofolio Website",
     description:
       "A modern portfolio website designed to share my journey in data, design, and problem-solving, blending technical precision with personal creativity.",
