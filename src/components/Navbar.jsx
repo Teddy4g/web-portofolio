@@ -36,7 +36,7 @@ export const Navbar = () => {
         >
           <span className="relative z-10">
             <span className="text-glow text-foreground"> Teddy </span>{" "}
-            <span className="text-[#F5F5F0] dark:text-[#5D866C]">Portfolio</span>
+            <span className="text-[#F5F5F0] dark:text-[#5D866C]">Agustinus</span>
           </span>
         </a>
 
