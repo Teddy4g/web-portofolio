@@ -9,11 +9,12 @@ const skills = [
       { name: "PL/SQL", level: 88, category: "data" },
       { name: "Tableau", level: 85, category: "data" },
 
-  // Frontend
-    { name: "HTML/CSS", level: 80, category: "frontend" },
-    { name: "JavaScript", level: 80, category: "frontend" },
-    { name: "React", level: 80, category: "frontend" },
-    { name: "Tailwind CSS", level: 77, category: "frontend" },
+  // Web Development
+    { name: "HTML/CSS", level: 80, category: "web development" },
+    { name: "JavaScript", level: 80, category: "web development" },
+    { name: "React", level: 80, category: "web development" },
+    { name: "Tailwind CSS", level: 77, category: "web development" },
+    { name: "PHP", level: 80, category: "web development" },
 
 
 
@@ -25,7 +26,7 @@ const skills = [
 
 ];
 
-const categories = ["all", "data", "frontend", "tools"];
+const categories = ["all", "data", "web development", "tools"];
 
 export const SkillsSection = () => {
   const [activeCategory, setActiveCategory] = useState("all");
