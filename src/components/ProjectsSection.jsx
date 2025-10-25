@@ -68,6 +68,7 @@ const projects = [
     tags: ["React", "TailwindCSS", "Vercel"],
     demoUrl: "https://web-portofolio-teddy.vercel.app/",
   },
+  
 ];
 
 export const ProjectsSection = () => {
