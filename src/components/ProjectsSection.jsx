@@ -66,7 +66,7 @@ const projects = [
       "A modern portfolio website designed to share my journey in data, design, and problem-solving, blending technical precision with personal creativity.",
     image: "/projects/webporto.jpeg",
     tags: ["React", "TailwindCSS", "Vercel"],
-    demoUrl: "https://github.com/Teddy4g/ML-Fraud-Detection",
+    demoUrl: "https://web-portofolio-teddy.vercel.app/",
   },
 ];
 
