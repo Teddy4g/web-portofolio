@@ -10,11 +10,11 @@ const skills = [
       { name: "Tableau", level: 85, category: "data" },
 
   // Web Development
+    { name: "Spring Boot", level: 80, category: "web development" },
     { name: "HTML/CSS", level: 80, category: "web development" },
     { name: "JavaScript", level: 80, category: "web development" },
     { name: "React", level: 80, category: "web development" },
     { name: "Tailwind CSS", level: 77, category: "web development" },
-    { name: "PHP", level: 80, category: "web development" },
 
 
 
