@@ -20,7 +20,7 @@ const skills = [
 
   // Programming & Tools
     { name: "C++", level: 80, category: "tools" },
-    { name: "Java", level: 70, category: "tools" },
+    { name: "Java", level: 80, category: "tools" },
     { name: "Git / GitHub", level: 75, category: "tools" },
     { name: "VS Code", level: 95, category: "tools" },
 
