@@ -20,9 +20,9 @@ export const AboutSection = () => {
             </h3>
 
             <p className="text-muted-foreground">
-              As an Information Systems student, I enjoy connecting ideas, people, and technology to create structured yet meaningful solutions. 
+              As an Information Systems student, I enjoy connecting ideas, people, and technology to design practical, data-driven solutions. 
               Through academic projects and organizational experiences, I’ve learned to approach challenges with both analytical precision and creative adaptability. 
-              I’m passionate about continuous learning — exploring how data, systems, and design thinking can work together to make an impact.
+              I’m passionate about continuous learning — exploring how data, systems, and design thinking can create meaningful impact
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
@@ -48,8 +48,8 @@ export const AboutSection = () => {
                 <div className="text-left">
                   <h4 className="font-semibold text-lg"> Data Anlysis</h4>
                   <p className="text-muted-foreground">
-                    Turning raw data into actionable insights through structured exploration, visualization, and analytical thinking.
-                    I enjoy uncovering patterns that help inform smarter decisions.
+                    urning raw data into actionable insights through exploration and visualization 
+                    uncovering patterns that help inform smarter product decisions
                   </p>
                 </div>
               </div>
@@ -77,7 +77,7 @@ export const AboutSection = () => {
                 <div className="text-left">
                   <h4 className="font-semibold text-lg">Strategy Thinking & Business Insight</h4>
                   <p className="text-muted-foreground">
-                    Exploring how data and structured thinking can turn business challenges into practical solutions.
+                    Exploring how structured data and design thinking can turn business challenges into practical, scalable solutions.
                   </p>
                 </div>
               </div>
