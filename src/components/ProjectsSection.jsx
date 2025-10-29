@@ -52,15 +52,6 @@ const projects = [
   },
   {
     id: 6,
-    title: "Machine learning Project",
-    description:
-      "Built a Streamlit app to predict fraudulent transactions using logistic regression and EDA on simulated real-world banking data.",
-    image: "/projects/ML1.jpeg",
-    tags: ["Python", "Streamlit", "Logistic Regression"],
-    demoUrl: "https://github.com/Teddy4g/ML-Fraud-Detection",
-  },
-  {
-    id: 7,
     title: "Portofolio Website",
     description:
       "A modern portfolio website designed to share my journey in data, design, and problem-solving, blending technical precision with personal creativity.",
