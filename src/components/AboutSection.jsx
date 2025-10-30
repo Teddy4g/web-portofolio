@@ -52,7 +52,7 @@ export const AboutSection = () => {
             </p>
 
             <a
-              href="https://www.linkedin.com/"
+              href="https://www.linkedin.com/in/teddyagustinus/"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 text-neutral-900 font-medium underline underline-offset-[6px] decoration-neutral-300 hover:decoration-neutral-800 transition-all"
