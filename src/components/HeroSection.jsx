@@ -1,38 +1,24 @@
-import { ArrowDown } from "lucide-react";
+import SplitText from "./SplitText";
 
 export const HeroSection = () => {
   return (
-    <section
-      id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center px-4"
-    >
-      <div className="container max-w-4xl mx-auto text-center z-10">
-        <div className="space-y-6">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-            <span className="opacity-0 animate-fade-in"> Hi, I'm</span>
-            <span className="text-primary opacity-0 animate-fade-in-delay-1">
-              {" "}
-              Teddy
-            </span>
-            <span className="text-gradient ml-2 opacity-0 animate-fade-in-delay-2">
-              {" "}
-              Agustinus
-            </span>
-          </h1>
-
-          <p className="text-lg md:text-xl text-muted-foreground max-2-2xl mx-auto opacity-0 animate-fade-in-delay-3">
-            I’m an information systems student passionate about connecting strategy, data, and technology.
-            I love turning complex problems into data-informed and user-centered product solutions.
-          </p>
-
-          <div className="pt-4 opacity-0 animate-fade-in-delay-4">
-            <a href="#projects" className="cosmic-button">
-              View My Project
-            </a>
-          </div>
+    <section id="hero" className="scroll-mt-28 min-h-[88vh] flex items-center">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="uppercase tracking-[0.18em] text-xs text-neutral-500 mb-4">
+          <SplitText text="PORTFOLIO" delay={0.2} />
         </div>
-      </div>
 
+        <h1 className="font-extrabold tracking-tight leading-[1.05] text-[38px] sm:text-[48px] md:text-[72px] mb-4">
+          <SplitText text="Hi, I'm Teddy Agustinus" delay={0.6} />
+        </h1>
+
+        <p className="text-[16px] sm:text-[18px] md:text-[20px] text-neutral-600 max-w-3xl">
+          <SplitText
+            text="I connect strategy, data, and technology to turn complex problems into user-centered solutions."
+            delay={0.5}
+          />
+        </p>
+      </div>
     </section>
   );
 };

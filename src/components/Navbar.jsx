@@ -1,91 +1,112 @@
-import { cn } from "@/lib/utils";
-import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react"; // icon hamburger
 
-const navItems = [
-  { name: "Home", href: "#hero" },
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Certificate", href: "#certificates" },
+const items = [
+  { name: "Home", href: "#hero", id: "hero" },
+  { name: "About", href: "#about", id: "about" },
+  { name: "Skills", href: "#skills", id: "skills" },
+  { name: "Projects", href: "#projects", id: "projects" },
+  { name: "Certificate", href: "#certificates", id: "certificates" },
 ];
 
 export const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState("hero");
+  const [open, setOpen] = useState(false);
+
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 140, damping: 28, mass: 0.2 });
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.screenY > 10);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    onScroll();
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    const sections = items.map(i => document.getElementById(i.id)).filter(Boolean);
+    const obs = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter(e => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)?.[0];
+        if (visible?.target?.id) setActive(visible.target.id);
+      },
+      { rootMargin: "-40% 0px -55% 0px" }
+    );
+    sections.forEach(s => obs.observe(s));
+    return () => obs.disconnect();
+  }, []);
+
+  const handleNavClick = (e, id) => {
+    e.preventDefault();
+    const el = document.getElementById(id);
+    if (!el) return;
+    const y = el.getBoundingClientRect().top + window.scrollY - 80;
+    window.scrollTo({ top: y, behavior: "smooth" });
+    setOpen(false);
+  };
+
   return (
-    <nav
-      className={cn(
-        "fixed w-full z-40 transition-all duration-300",
-        isScrolled ? "py-3 bg-background/80 backdrop-blur-md shadow-xs" : "py-5"
-      )}
-    >
-      <div className="container flex items-center justify-between">
-        <a
-          className="text-xl font-bold text-primary flex items-center"
-          href="#hero"
-        >
-          <span className="relative z-10">
-            <span className="text-glow text-foreground"> Teddy </span>{" "}
-            <span className="text-[#F5F5F0] dark:text-[#5D866C]">Agustinus</span>
-          </span>
-        </a>
+    <>
+      <nav className={`fixed top-0 inset-x-0 z-50 transition-all ${scrolled ? "bg-white/80 backdrop-blur border-b border-neutral-200" : "bg-transparent"}`}>
+        
+        <motion.div style={{ scaleX }} className="origin-left h-0.5 bg-neutral-900/80" />
 
-        {/* desktop nav */}
-        <div className="hidden md:flex space-x-8">
-          {navItems.map((item, key) => (
-            <a
-              key={key}
-              href={item.href}
-              className="text-foreground/80 hover:text-primary transition-colors duration-300"
-            >
-              {item.name}
-            </a>
-          ))}
-        </div>
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <a href="#hero" onClick={(e)=>handleNavClick(e,"hero")} className="font-semibold tracking-tight">
+            Teddy Agustinus
+          </a>
 
-        {/* mobile nav */}
-
-        <button
-          onClick={() => setIsMenuOpen((prev) => !prev)}
-          className="md:hidden p-2 text-foreground z-50"
-          aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}{" "}
-        </button>
-
-        <div
-          className={cn(
-            "fixed inset-0 bg-background/95 backdroup-blur-md z-40 flex flex-col items-center justify-center",
-            "transition-all duration-300 md:hidden",
-            isMenuOpen
-              ? "opacity-100 pointer-events-auto"
-              : "opacity-0 pointer-events-none"
-          )}
-        >
-          <div className="flex flex-col space-y-8 text-xl">
-            {navItems.map((item, key) => (
+          <div className="hidden md:flex items-center gap-6">
+            {items.map(link => (
               <a
-                key={key}
-                href={item.href}
-                className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                onClick={() => setIsMenuOpen(false)}
+                key={link.id}
+                href={link.href}
+                onClick={(e)=>handleNavClick(e, link.id)}
+                className={`text-sm transition ${
+                  active === link.id ? "text-neutral-900" : "text-neutral-500 hover:text-neutral-900"
+                }`}
               >
-                {item.name}
+                {link.name}
               </a>
             ))}
           </div>
+
+          {/* Mobile Hamburger */}
+          <button className="md:hidden" onClick={() => setOpen(!open)}>
+            {open ? <X size={24}/> : <Menu size={24} />}
+          </button>
         </div>
-      </div>
-    </nav>
+      </nav>
+
+      {/* Mobile Menu Drawer */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="fixed top-[72px] left-0 right-0 bg-white border-b border-neutral-200 shadow-md z-40 md:hidden"
+          >
+            <div className="flex flex-col px-6 py-4 gap-4">
+              {items.map(link => (
+                <button
+                  key={link.id}
+                  onClick={(e)=>handleNavClick(e, link.id)}
+                  className={`text-left text-base ${
+                    active === link.id ? "text-neutral-900 font-semibold" : "text-neutral-600"
+                  }`}
+                >
+                  {link.name}
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };

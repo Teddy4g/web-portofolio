@@ -1,6 +1,4 @@
 import { Navbar } from "../components/Navbar";
-import { ThemeToggle } from "../components/ThemeToggle";
-import { StarBackground } from "@/components/StarBackground";
 import { HeroSection } from "../components/HeroSection";
 import { AboutSection } from "../components/AboutSection";
 import { SkillsSection } from "../components/SkillsSection";
@@ -10,24 +8,34 @@ import { Footer } from "../components/FooterSection";
 
 export const Home = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-      {/* Theme Toggle */}
-        <ThemeToggle />
-      {/* Background Effects */}
-        <StarBackground />
-
-      {/* Navbar */}
+   <div className="bg-background text-foreground overflow-x-hidden">
       <Navbar />
-      {/* Main Content */}
-      <main>
-        <HeroSection />
-        <AboutSection />
-        <SkillsSection />
-        <ProjectsSection />
-        <CertificateSection />
-      </main> 
 
-      {/* Footer */}
+      {/* Hero */}
+      <div className="section-wrapper pt-32">
+        <HeroSection />
+      </div>
+
+      {/* About */}
+      <div className="section-wrapper">
+        <AboutSection />
+      </div>
+
+      {/* Skills */}
+      <div className="section-wrapper bg-muted/10">
+        <SkillsSection />
+      </div>
+
+      {/* Projects */}
+      <div className="section-wrapper">
+        <ProjectsSection />
+      </div>
+
+      {/* Certificates */}
+      <div className="section-wrapper bg-muted/10">
+        <CertificateSection />
+      </div>
+
       <Footer />
     </div>
   );

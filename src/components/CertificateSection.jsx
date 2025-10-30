@@ -1,101 +1,45 @@
-import { useState } from "react";
-import { ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
+
+const certificates = [
+  { id: 1, title: "SQL (Basic) – HackerRank", issuer: "HackerRank", image: "/certificates/1SERTI.png" },
+  { id: 2, title: "SQL (Intermediate) – HackerRank", issuer: "HackerRank", image: "/certificates/2SERTI.png" },
+  { id: 3, title: "SQL (Advanced) – HackerRank", issuer: "HackerRank", image: "/certificates/3SERTI.png" },
+  { id: 4, title: "Python (Basic) - HackerRank", issuer: "HackerRank", image: "/certificates/4SERTI.png" },
+];
+
 
 export const CertificateSection = () => {
-  const certificates = [
-    {
-      id: 1,
-      title: "SQL (Basic) – HackerRank",
-      issuer: "HackerRank",
-      year: "2025",
-      image: "/certificates/1SERTI.png",
-      link: "https://www.hackerrank.com/certificates/76355e386f51",
-    },
-    {
-      id: 2,
-      title: "SQL (Intermediate) – HackerRank",
-      issuer: "HackerRank",
-      year: "2025",
-      image: "/certificates/2SERTI.png",
-      link: "https://www.hackerrank.com/certificates/c6741f8d7164",
-    },
-    {
-      id: 3,
-      title: "SQL (Advanced) – HackerRank",
-      issuer: "HackerRank",
-      year: "2025",
-      image: "/certificates/3SERTI.png",
-      link: "https://www.hackerrank.com/certificates/86536e96d6c1",
-    },
-    {
-      id: 4,
-      title: "Python (Basic) - HackerRank",
-      issuer: "HackerRank",
-      year: "2025",
-      image: "/certificates/4SERTI.png",
-      link: "https://www.hackerrank.com/certificates/8e4aba765542",
-    },
-   
-  ];
-
-  
-  const [visibleCount, setVisibleCount] = useState(3);
-  const handleLoadMore = () => setVisibleCount((prev) => prev + 3);
-
   return (
-    <section id="certificates" className="py-24 px-4 relative bg-secondary/30">
-      <div className="container mx-auto max-w-6xl">
-        <h2 className="text-primary text-3xl md:text-4xl font-bold mb-4 text-center">
-          Certifications
-        </h2>
+    <section id="certificates" className="scroll-mt-28">
+      <div className="max-w-6xl mx-auto px-6">
+        <motion.h2
+          initial={{ opacity: 0, y: 22 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: [0.22,1,0.36,1] }}
+          className="text-3xl md:text-5xl font-bold tracking-tight mb-8 md:mb-10"
+        >
+          Certificates
+        </motion.h2>
 
-        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Here are some of my professional certifications and achievements that reflect my growth and commitment to continuous learning in technology and data.
-        </p>
-
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {certificates.slice(0, visibleCount).map((cert) => (
-            <div
-              key={cert.id}
-              className="group bg-card rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg"
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+          {certificates.map((c, i) => (
+            <motion.div
+              key={c.id}
+              initial={{ opacity: 0, y: 22 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: i * 0.06, ease: [0.22,1,0.36,1] }}
+              className="bg-white border border-neutral-200 rounded-xl overflow-hidden shadow-sm"
             >
-              <div className="h-48 overflow-hidden">
-                <img
-                  src={cert.image}
-                  alt={cert.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
+              <img src={c.image} alt={c.title} loading="lazy" className="w-full h-44 md:h-48 object-cover" />
+              <div className="p-4">
+                <h3 className="font-semibold">{c.title}</h3>
+                <p className="text-sm text-neutral-600">{c.issuer}</p>
               </div>
-
-              <div className="p-6">
-                <h3 className="text-lg font-semibold mb-1">{cert.title}</h3>
-                <p className="text-sm text-muted-foreground mb-2">
-                  {cert.issuer} • {cert.year}
-                </p>
-                <a
-                  href={cert.link}
-                  target="_blank"
-                  className="inline-flex items-center text-primary hover:underline"
-                >
-                  View Certificate <ExternalLink size={14} className="ml-1" />
-                </a>
-              </div>
-            </div>
+            </motion.div>
           ))}
         </div>
-
-        {/* Tombol Load More */}
-        {visibleCount < certificates.length && (
-          <div className="text-center mt-12">
-            <button
-              onClick={handleLoadMore}
-              className="cosmic-button w-fit flex items-center mx-auto gap-2"
-            >
-              Load More
-            </button>
-          </div>
-        )}
       </div>
     </section>
   );
