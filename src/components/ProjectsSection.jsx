@@ -57,6 +57,15 @@ const projects = [
     image: "/projects/webporto.jpeg",
     link: "https://web-portofolio-teddy.vercel.app/",
   },
+  {
+    id: 7,
+    title: "Hotel Booking Management System",
+    role: "Fullstack",
+    year: "2025",
+    desc: "Backend service for hotel management built with Spring Boot and MySQL",
+    image: "/projects/springboot.jpeg",
+    link: "https://github.com/Teddy4g/hotelbooking-springboot",
+  },
 ];
 
 export const ProjectsSection = () => {
