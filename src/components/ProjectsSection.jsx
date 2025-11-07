@@ -5,7 +5,7 @@ import Reveal from "./Reveal";
 const projects = [
   {
     id: 1,
-    title: "Tableau Project 1",
+    title: "London Bikes Analysis",
     role: "Data Analyst",
     year: "2025",
     desc: "Analyzed 6M+ bike trips; seasonal demand & weather patterns.",
@@ -14,7 +14,7 @@ const projects = [
   },
   {
     id: 2,
-    title: "Tableau Project 2",
+    title: "Loan risk Dashboard",
     role: "Data Analyst",
     year: "2025",
     desc: "Loan risk dashboard from SQL pipeline; monitor borrower KPIs.",
