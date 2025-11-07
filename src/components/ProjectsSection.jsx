@@ -15,7 +15,7 @@ const projects = [
   {
     id: 2,
     title: "Tableau Project 2",
-    role: "BI Developer",
+    role: "Data Analyst",
     year: "2025",
     desc: "Loan risk dashboard from SQL pipeline; monitor borrower KPIs.",
     image: "/projects/DATA1.jpeg",
@@ -23,6 +23,15 @@ const projects = [
   },
   {
     id: 3,
+    title: "RFM Analysis & CLV Dashboard",
+    role: "Data Analyst",
+    year: "2025",
+    desc: "Strategic dashboard for customer segmentation and sales analysis.",
+    image: "/projects/DATA5.jpeg",
+    link: "https://public.tableau.com/app/profile/teddy.agustinus/viz/RetailAnalyst_17624110113550/Dashboard1?publish=yes",
+  },
+  {
+    id: 4,
     title: "Loan Default ML Model",
     role: "ML Engineer",
     year: "2025",
@@ -31,7 +40,7 @@ const projects = [
     link: "https://www.canva.com/design/DAG2KGf6DiU/r6tl3ozRn0haJilR6of_6w/edit?utm_content=DAG2KGf6DiU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
   },
   {
-    id: 4,
+    id: 5,
     title: "Sustainability Clustering",
     role: "Machine Learning",
     year: "2025",
@@ -40,7 +49,7 @@ const projects = [
     link: "https://www.canva.com/design/DAG0dfPwPKM/oFl7kTJ29IwGSMeEMukEOQ/edit",
   },
   {
-    id: 5,
+    id: 6,
     title: "Tech Stock LSTM Forecasting",
     role: "Data Scientist",
     year: "2025",
@@ -49,7 +58,7 @@ const projects = [
     link: "https://github.com/Teddy4g/BIGDATA",
   },
   {
-    id: 6,
+    id: 7,
     title: "Personal Portfolio Website",
     role: "Frontend",
     year: "2025",
@@ -58,7 +67,7 @@ const projects = [
     link: "https://web-portofolio-teddy.vercel.app/",
   },
   {
-    id: 7,
+    id: 8,
     title: "Hotel Booking Management System",
     role: "Fullstack",
     year: "2025",
