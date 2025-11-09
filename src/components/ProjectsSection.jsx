@@ -5,12 +5,12 @@ import Reveal from "./Reveal";
 const projects = [
   {
     id: 1,
-    title: "London Bikes Analysis",
+    title: "RFM Analysis & CLV Dashboard",
     role: "Data Analyst",
     year: "2025",
-    desc: "Analyzed 6M+ bike trips; seasonal demand & weather patterns.",
-    image: "/projects/DATA2.jpeg",
-    link: "https://public.tableau.com/app/profile/teddy.agustinus/viz/LondonBikeRidesNumberofCyclingTripsinLondon/Dashboard1",
+    desc: "Strategic dashboard for customer segmentation and sales analysis.",
+    image: "/projects/DATA5.jpeg",
+    link: "https://public.tableau.com/app/profile/teddy.agustinus/viz/RetailAnalyst_17624110113550/Dashboard1?publish=yes",
   },
   {
     id: 2,
@@ -23,12 +23,12 @@ const projects = [
   },
   {
     id: 3,
-    title: "RFM Analysis & CLV Dashboard",
+    title: "London Bikes Analysis",
     role: "Data Analyst",
     year: "2025",
-    desc: "Strategic dashboard for customer segmentation and sales analysis.",
-    image: "/projects/DATA5.jpeg",
-    link: "https://public.tableau.com/app/profile/teddy.agustinus/viz/RetailAnalyst_17624110113550/Dashboard1?publish=yes",
+    desc: "Analyzed 6M+ bike trips; seasonal demand & weather patterns.",
+    image: "/projects/DATA2.jpeg",
+    link: "https://public.tableau.com/app/profile/teddy.agustinus/viz/LondonBikeRidesNumberofCyclingTripsinLondon/Dashboard1",
   },
   {
     id: 4,
