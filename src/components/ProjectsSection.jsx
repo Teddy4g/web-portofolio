@@ -14,12 +14,12 @@ const projects = [
   },
   {
     id: 2,
-    title: "Loan risk Dashboard",
+    title: "Superstore Sales Dashboard",
     role: "Data Analyst",
     year: "2025",
-    desc: "Loan risk dashboard from SQL pipeline; monitor borrower KPIs.",
+    desc: "Interactive dashboard visualizing sales, profit, and customer trends.",
     image: "/projects/DATA1.jpeg",
-    link: "https://public.tableau.com/app/profile/teddy.agustinus/viz/BankLoan_17592366179120/OVERVIEW",
+    link: "https://public.tableau.com/app/profile/teddy.agustinus/viz/superstoreAnalyst/SalesPerformanceDashboard?publish=yes",
   },
   {
     id: 3,
