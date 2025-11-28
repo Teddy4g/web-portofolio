@@ -33,7 +33,7 @@ const projects = [
   {
     id: 4,
     title: "Loan Default ML Model",
-    role: "ML Engineer",
+    role: "Data Science",
     year: "2025",
     desc: "Predict default probabilities using logistic regression",
     image: "/projects/DATA4.jpeg",
@@ -42,7 +42,7 @@ const projects = [
   {
     id: 5,
     title: "Sustainability Clustering",
-    role: "Machine Learning",
+    role: "Data Science",
     year: "2025",
     desc: "HDBSCAN to detect ecosystem risk zones across U.S. lakes.",
     image: "/projects/DATA3.jpeg",
@@ -51,7 +51,7 @@ const projects = [
   {
     id: 6,
     title: "Tech Stock LSTM Forecasting",
-    role: "Data Scientist",
+    role: "Big Data",
     year: "2025",
     desc: "LSTM forecasting with SHAP drivers for tech stocks.",
     image: "/projects/Big Data.jpeg",
