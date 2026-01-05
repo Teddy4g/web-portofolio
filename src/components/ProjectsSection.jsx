@@ -10,7 +10,7 @@ const projects = [
     year: "2025",
     desc: "Strategic dashboard for customer segmentation and sales analysis.",
     image: "/projects/DATA5.jpeg",
-    link: "https://public.tableau.com/app/profile/teddy.agustinus/viz/RetailAnalyst_17624110113550/DetailProducts?publish=yes",
+    link: "https://public.tableau.com/app/profile/teddy.agustinus/viz/RetailAnalyst_17624110113550/Dashboard?publish=yes",
   },
   {
     id: 2,
