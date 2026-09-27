@@ -145,30 +145,6 @@ body {
   letter-spacing: -0.02em;
 }
 
-.avatar-wrapper {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 1.5px solid var(--border-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--bg-tertiary);
-}
-
-.avatar-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.brand-divider {
-  width: 1px;
-  height: 20px;
-  background-color: var(--border-color);
-}
-
 .brand-name {
   color: var(--text-primary);
 }
@@ -1115,4 +1091,3 @@ body {
   color: var(--text-muted);
   font-variant-numeric: tabular-nums;
 }
-

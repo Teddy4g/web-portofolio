@@ -8,10 +8,6 @@ export default function Navbar({ theme, toggleTheme, activeSection, scrollToSect
       <header className="navbar">
         <div className="nav-container">
           <a href="#" className="brand" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-            <div className="avatar-wrapper">
-              <img src="/avatar.jpg" alt="Teddy Avatar" className="avatar-img" />
-            </div>
-            <span className="brand-divider"></span>
             <span className="brand-name">Teddy!</span>
           </a>
 
