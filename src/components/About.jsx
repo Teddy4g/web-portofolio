@@ -18,6 +18,9 @@ export default function About() {
             <p>
               My work spans master data governance for <strong>SAP ECC-to-S/4HANA migration</strong>, building cost-effective <strong>RAG-based industry classification pipelines</strong> (Vector DB, LLMs), cleaning 40M+ rows of data with Python & BigQuery, and automating enterprise workflows.
             </p>
+            <p>
+              Currently 喜欢学习汉语， 我会说一点中文。
+            </p>
 
             <div className="stats-row">
               <div className="stat-item">
