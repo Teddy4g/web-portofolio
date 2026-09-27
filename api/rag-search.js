@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { answerWithJsonRag, buildContext } from './_lib/json-rag.js';
+import { answerWithJsonRag } from './_lib/json-rag.js';
 
 const MAX_QUERY_LENGTH = 1_000;
 
@@ -36,10 +36,6 @@ export default async function handler(req, res) {
         : result.quotaExhausted
         ? 'Gemini quota fallback'
         : result.match ? 'Portfolio knowledge search' : 'RAG relevance filter',
-      retrievedContext: result.match && !result.quotaExhausted
-        ? buildContext(result.matches)
-        : undefined,
-      sources: result.matches.map(({ question, answer, score }) => ({ question, answer, score })),
     });
   } catch (error) {
     console.error('[JSON RAG error]', error);

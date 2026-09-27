@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Brain, Layers, X } from 'lucide-react';
+import { Brain, X } from 'lucide-react';
 import { ragSearchJson } from '../utils/ragSearchJson.js';
 
 const STATUS = {
@@ -15,7 +15,6 @@ export default function QAModal({ isOpen, onClose, query, templateAnswer = null 
   const [answer, setAnswer] = useState(null);
   const [errorMsg, setErrorMsg] = useState('');
   const [typedText, setTypedText] = useState('');
-  const [showRawContext, setShowRawContext] = useState(false);
   const abortRef = useRef(false);
   const typingRef = useRef(null);
 
@@ -27,7 +26,6 @@ export default function QAModal({ isOpen, onClose, query, templateAnswer = null 
     setAnswer(null);
     setTypedText('');
     setErrorMsg('');
-    setShowRawContext(false);
     setStatus(STATUS.LOADING);
 
     const presentAnswer = (top) => {
@@ -53,7 +51,6 @@ export default function QAModal({ isOpen, onClose, query, templateAnswer = null 
           id: `template-${templateAnswer.id}`,
           category: templateAnswer.category,
           text: templateAnswer.answer,
-          sources: [],
         },
         score: 1,
         latencyMs: 0,
@@ -146,65 +143,6 @@ export default function QAModal({ isOpen, onClose, query, templateAnswer = null 
               <div className="rag-answer-meta">
                 <span className="rag-category-badge">{answer.chunk.category}</span>
               </div>
-
-              {answer.chunk.retrievedContext && (
-                <div style={{
-                  marginBottom: '1rem',
-                  padding: '0.8rem 1rem',
-                  borderRadius: '8px',
-                  backgroundColor: 'rgba(16, 185, 129, 0.08)',
-                  border: '1px solid rgba(16, 185, 129, 0.25)',
-                  fontSize: '0.82rem',
-                }}>
-                  <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    marginBottom: '0.4rem',
-                  }}>
-                    <span style={{
-                      fontWeight: 600,
-                      color: '#34d399',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '4px',
-                    }}>
-                      <Layers size={14} />
-                      Supporting information
-                    </span>
-                    <button
-                      onClick={() => setShowRawContext((visible) => !visible)}
-                      style={{
-                        background: 'none',
-                        border: 'none',
-                        color: '#6ee7b7',
-                        fontSize: '0.75rem',
-                        cursor: 'pointer',
-                        textDecoration: 'underline',
-                      }}
-                    >
-                      {showRawContext ? 'Hide details' : 'View details'}
-                    </button>
-                  </div>
-
-                  {showRawContext && (
-                    <div style={{
-                      maxHeight: '180px',
-                      overflowY: 'auto',
-                      whiteSpace: 'pre-wrap',
-                      fontFamily: 'monospace',
-                      fontSize: '0.75rem',
-                      color: 'var(--text-muted)',
-                      padding: '0.5rem',
-                      backgroundColor: 'rgba(0, 0, 0, 0.3)',
-                      borderRadius: '4px',
-                      marginTop: '0.4rem',
-                    }}>
-                      {answer.chunk.retrievedContext}
-                    </div>
-                  )}
-                </div>
-              )}
 
               <div style={{
                 fontSize: '0.75rem',

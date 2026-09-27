@@ -15,8 +15,6 @@ export async function ragSearchJson(query) {
       id: data.fallback ? 'json-rag-fallback' : 'json-rag-answer',
       category: data.category || 'About Teddy',
       text: data.answer,
-      retrievedContext: data.retrievedContext,
-      sources: data.sources || [],
     },
     score: data.score ?? 0,
     latencyMs: data.latencyMs,
