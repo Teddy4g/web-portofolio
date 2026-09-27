@@ -1,0 +1,4 @@
+# requirements.txt for the Graph RAG pipeline
+neo4j>=5.0.0
+openai>=1.0.0
+python-dotenv>=1.0.0
