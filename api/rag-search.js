@@ -23,18 +23,17 @@ export default async function handler(req, res) {
       fallback: result.fallback,
       greeting: Boolean(result.greeting),
       quotaExhausted: Boolean(result.quotaExhausted),
+      localAnswer: Boolean(result.localAnswer),
       answer: result.answer,
       category: result.greeting
         ? 'Teddy’s assistant'
-        : result.quotaExhausted
-        ? 'Assistant unavailable'
         : result.match ? 'About Teddy' : 'Notice',
       score: topScore,
       latencyMs: Date.now() - startedAt,
       source: result.greeting
         ? 'Greeting response'
-        : result.quotaExhausted
-        ? 'Gemini quota fallback'
+        : result.localAnswer
+        ? 'Saved portfolio Q&A'
         : result.match ? 'Portfolio knowledge search' : 'RAG relevance filter',
     });
   } catch (error) {

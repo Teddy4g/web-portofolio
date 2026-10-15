@@ -1,8 +1,8 @@
 import { GoogleGenAI } from '@google/genai';
 import OpenAI from 'openai';
 import knowledgeIndex from '../../data/teddy_knowledge.json' with { type: 'json' };
+import { retrieveLocalMatches } from './local-retrieval.js';
 
-export const GEMINI_QUOTA_MESSAGE = "Teddy's Personal Asssitant currently tired go back tommorow";
 export const GREETING_MESSAGE = "anything about teddy's i'll answer";
 export const OUT_OF_CONTEXT_MESSAGE = 'Better Ask Teddy directly through contact on the website';
 
@@ -27,15 +27,9 @@ function parseScore(value, fallback) {
 }
 
 export function getRagConfig(env = process.env) {
-  const required = ['OPENAI_API_KEY', 'GEMINI_API_KEY'];
-  const missing = required.filter((name) => !env[name]?.trim());
-  if (missing.length) {
-    throw new Error(`Missing required environment variable(s): ${missing.join(', ')}`);
-  }
-
   return {
-    openaiApiKey: env.OPENAI_API_KEY.trim(),
-    geminiApiKey: env.GEMINI_API_KEY.trim(),
+    openaiApiKey: env.OPENAI_API_KEY?.trim() || '',
+    geminiApiKey: env.GEMINI_API_KEY?.trim() || '',
     embeddingModel: env.OPENAI_EMBEDDING_MODEL?.trim() || DEFAULTS.embeddingModel,
     embeddingDimensions: parsePositiveInteger(
       env.OPENAI_EMBEDDING_DIMENSIONS,
@@ -124,7 +118,9 @@ export async function retrieveMatches(query, config, dependencies = {}) {
   const index = dependencies.knowledgeIndex || knowledgeIndex;
   validateKnowledgeIndex(index, config);
 
-  const openai = dependencies.openai || new OpenAI({ apiKey: config.openaiApiKey });
+  const openai = dependencies.openai || new OpenAI({
+    apiKey: config.openaiApiKey, timeout: 8_000, maxRetries: 0,
+  });
   const response = await openai.embeddings.create(embeddingOptions(config, query));
   const queryVector = response.data?.[0]?.embedding;
   if (!Array.isArray(queryVector) || queryVector.length === 0) {
@@ -143,8 +139,14 @@ export async function retrieveMatches(query, config, dependencies = {}) {
 }
 
 export async function generateGroundedAnswer(query, matches, config, dependencies = {}) {
-  const gemini = dependencies.gemini || new GoogleGenAI({ apiKey: config.geminiApiKey });
+  if (!config.geminiApiKey && !dependencies.gemini) {
+    return { answer: matches[0].answer, quotaExhausted: false, localAnswer: true };
+  }
   try {
+    const gemini = dependencies.gemini || new GoogleGenAI({
+      apiKey: config.geminiApiKey,
+      httpOptions: { timeout: 8_000, retryOptions: { attempts: 1 } },
+    });
     const response = await gemini.models.generateContent({
       model: config.geminiModel,
       contents: buildAnswerInput(query, matches),
@@ -165,10 +167,12 @@ export async function generateGroundedAnswer(query, matches, config, dependencie
     if (!answer) throw new Error('Gemini returned an empty grounded answer.');
     return { answer, quotaExhausted: false };
   } catch (error) {
-    if (isGeminiQuotaError(error)) {
-      return { answer: GEMINI_QUOTA_MESSAGE, quotaExhausted: true };
-    }
-    throw error;
+    console.error('[JSON RAG generation unavailable]', error);
+    return {
+      answer: matches[0].answer,
+      quotaExhausted: isGeminiQuotaError(error),
+      localAnswer: true,
+    };
   }
 }
 
@@ -184,8 +188,26 @@ export async function answerWithJsonRag(query, env = process.env, dependencies =
   }
 
   const config = getRagConfig(env);
-  const matches = await retrieveMatches(query, config, dependencies);
-  const relevantMatches = matches.filter((match) => match.score >= config.minScore);
+  const index = dependencies.knowledgeIndex || knowledgeIndex;
+  const localMatches = retrieveLocalMatches(query, index, config.topK);
+  let relevantMatches = localMatches;
+  let localRetrieval = true;
+
+  // Exact saved questions need no query embedding. For other wording, prefer
+  // semantic retrieval and retain keyword matches if the provider is unavailable
+  // or its similarity threshold excludes an otherwise supported question.
+  if (!localMatches[0]?.exact && (config.openaiApiKey || dependencies.openai)) {
+    try {
+      const matches = await retrieveMatches(query, config, dependencies);
+      const semanticMatches = matches.filter((match) => match.score >= config.minScore);
+      if (semanticMatches.length) {
+        relevantMatches = semanticMatches;
+        localRetrieval = false;
+      }
+    } catch (error) {
+      console.error('[JSON RAG embedding unavailable]', error);
+    }
+  }
 
   if (relevantMatches.length === 0) {
     return {
@@ -203,6 +225,8 @@ export async function answerWithJsonRag(query, env = process.env, dependencies =
     fallback: false,
     answer: generation.answer,
     quotaExhausted: generation.quotaExhausted,
+    localAnswer: Boolean(generation.localAnswer),
+    localRetrieval,
     matches: relevantMatches,
     config,
   };
