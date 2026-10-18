@@ -2,13 +2,20 @@
 
 ## Portfolio chatbot
 
-The chatbot uses a pre-embedded JSON knowledge index for cosine-similarity
-retrieval, then Gemini for the grounded response. OpenAI creates only the
-visitor query embedding at runtime. The JSON index is bundled with the
-serverless API, so no database connection or MongoDB environment variables are
-required.
+The chatbot retrieves answers from the bundled JSON portfolio Q&A. Saved
+questions and conservative keyword matches work without API keys. When
+configured, OpenAI adds semantic retrieval for other wording, and Gemini
+rewrites the retrieved context into a concise answer. If embedding retrieval
+fails or excludes a confident keyword match, the chatbot uses the local match.
+If Gemini is unavailable, out of quota, or returns empty output, it returns the
+best retrieved answer verbatim. Questions without supporting context still
+receive the contact message.
 
-Required deployment variables:
+Both providers have an eight-second request timeout. API errors are logged on
+the server for diagnosis; they do not replace a supported answer with a generic
+error. No database connection or MongoDB environment variables are required.
+
+Optional deployment variables for semantic search and generated wording:
 
 ```ini
 OPENAI_API_KEY=
@@ -19,6 +26,11 @@ GEMINI_CHAT_MODEL=gemini-3.5-flash-lite
 JSON_RAG_TOP_K=5
 JSON_RAG_MIN_SCORE=0.60
 ```
+
+Run locally with `npm ci` and `npm run dev`. Verify with `npm run test:rag`,
+`npm run lint`, and `npm run build`. Deploy the repository to Vercel to serve
+both the Vite frontend and `api/rag-search.js`; a static-only host cannot run
+the chatbot API. API keys must be server-side variables, never `VITE_*` values.
 
 After editing `data/teddy_qa.csv`, rebuild the committed JSON index with:
 
